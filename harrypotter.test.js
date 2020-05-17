@@ -15,15 +15,25 @@ it("charges 16 euros for 2 of the same books",() => {
 	expect(cart.amount()).toBe(16);
 });
 
+xit("charges 15.20 euros for 2 different books",() => {
+    const cart = Cart();
+
+    cart.add(FIRST_VOLUME);
+    cart.add(SECOND_VOLUME);
+
+	expect(cart.amount()).toBe(15.20);
+});
+
 const FIRST_VOLUME = "The Philosopher's Stone";
+const SECOND_VOLUME = "Harry Potter and the Chamber of Secrets";
 
 function Cart() {
-    let numberOfBooks = 0;
+    let books = [];
 
     return {
         add: (book) => {
-            numberOfBooks++;
+            books.push(book);
         },
-        amount: () => 8 * numberOfBooks
+        amount: () => 8 * books.length
     };
 }
