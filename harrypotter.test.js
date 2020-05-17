@@ -27,7 +27,3 @@ function Cart() {
         amount: () => 8 * numberOfBooks
     };
 }
-
-function checkout(numberOfBooks) {
-    return numberOfBooks * 8;
-}
