@@ -15,7 +15,7 @@ it("charges 16 euros for 2 of the same books",() => {
 	expect(cart.amount()).toBe(16);
 });
 
-xit("charges 15.20 euros for 2 different books",() => {
+it("charges 15.20 euros for 2 different books",() => {
     const cart = Cart();
 
     cart.add(FIRST_VOLUME);
@@ -34,6 +34,12 @@ function Cart() {
         add: (book) => {
             books.push(book);
         },
-        amount: () => 8 * books.length
+        amount: () => {
+           let discount = 1;
+            if(books.length !== 1 && books[0] !== books[1]){
+                discount = 0.95;
+            }
+           return 8 * books.length * discount;
+        }
     };
 }
