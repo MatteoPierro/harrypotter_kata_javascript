@@ -68,7 +68,8 @@ function Cart() {
         amount: () => {
            let discount = 1;
 
-            if (books.length === 3 && books[0] !== books[1]) {
+            const uniqueBooks = new Set(books);
+            if(uniqueBooks.size === 3){
                 discount = 0.9;
             } else if(books.length !== 1 && books[0] !== books[1]) {
                 discount = 0.95;
