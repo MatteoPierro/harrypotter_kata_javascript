@@ -61,19 +61,26 @@ const THIRD_VOLUME = "Harry Potter and the Prisoner of Azkaban";
 function Cart() {
     let books = [];
 
+    const calculateDiscount = (uniqueBooks) => {
+        let discount = 1;
+
+        if(uniqueBooks.size === 3){
+            discount = 0.9;
+        } else if(uniqueBooks.size === 2) {
+            discount = 0.95;
+        }
+
+        return discount;
+    }
+
     return {
         add: (book) => {
             books.push(book);
         },
         amount: () => {
-           let discount = 1;
-
             const uniqueBooks = new Set(books);
-            if(uniqueBooks.size === 3){
-                discount = 0.9;
-            } else if(uniqueBooks.size === 2) {
-                discount = 0.95;
-            }
+
+            let discount = calculateDiscount(uniqueBooks);
 
             let booksAtNormalPrice = books.length - uniqueBooks.size;
             let booksAtDiscountPrice = uniqueBooks.size;
