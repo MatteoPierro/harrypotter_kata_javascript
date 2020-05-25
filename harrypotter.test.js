@@ -77,6 +77,21 @@ it("charges 30.00 euros for 5 different books", () => {
     expect(cart.amount()).toBe(30.00);
 });
 
+xit("charges 51.20 euros for 2, 2, 2, 1, 1 of the respective books", () => {
+    const cart = Cart();
+
+    cart.add(FIRST_VOLUME);
+    cart.add(FIRST_VOLUME);
+    cart.add(SECOND_VOLUME);
+    cart.add(SECOND_VOLUME);
+    cart.add(THIRD_VOLUME);
+    cart.add(THIRD_VOLUME);
+    cart.add(FOURTH_VOLUME);
+    cart.add(FIFTH_VOLUME);
+
+    expect(cart.amount()).toBe(51.20);
+});
+
 const FIRST_VOLUME = "The Philosopher's Stone";
 const SECOND_VOLUME = "Harry Potter and the Chamber of Secrets";
 const THIRD_VOLUME = "Harry Potter and the Prisoner of Azkaban";
