@@ -71,13 +71,15 @@ function Cart() {
             const uniqueBooks = new Set(books);
             if(uniqueBooks.size === 3){
                 discount = 0.9;
-            } else if(books.length !== 1 && books[0] !== books[1]) {
+            } else if(books.length === 2 && uniqueBooks.size === 2) {
                 discount = 0.95;
             } else if(books.length === 3 && books[1] !== books[2]) {
                 return 23.20;
             }
 
-            return 8 * books.length * discount;
+            let booksAtNormalPrice = books.length - uniqueBooks.size;
+            let booksAtDiscountPrice = uniqueBooks.size;
+            return 8 * booksAtNormalPrice + 8 * booksAtDiscountPrice  * discount;
         }
     };
 }
