@@ -84,7 +84,8 @@ function Cart() {
 
             const booksAtNormalPrice = books.length - uniqueBooks.size;
             const booksAtDiscountPrice = uniqueBooks.size;
-            return 8 * booksAtNormalPrice + 8 * booksAtDiscountPrice  * discount;
+            return 8 * booksAtNormalPrice +
+                   8 * booksAtDiscountPrice * discount;
         }
     };
 }
