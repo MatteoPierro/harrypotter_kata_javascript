@@ -54,9 +54,21 @@ it("charges 23.20 euros for 2 the same books and 1 different book",() => {
 	expect(cart.amount()).toBe(23.20);
 });
 
+it("charges 25.60 euros for 4 different books", () => {
+    const cart = Cart();
+
+    cart.add(FIRST_VOLUME);
+    cart.add(SECOND_VOLUME);
+    cart.add(THIRD_VOLUME);
+    cart.add(FOURTH_VOLUME);
+
+    expect(cart.amount()).toBe(25.60);
+});
+
 const FIRST_VOLUME = "The Philosopher's Stone";
 const SECOND_VOLUME = "Harry Potter and the Chamber of Secrets";
 const THIRD_VOLUME = "Harry Potter and the Prisoner of Azkaban";
+const FOURTH_VOLUME = "Harry Potter and the Goblet of Fire";
 
 function Cart() {
     const books = [];
@@ -64,10 +76,12 @@ function Cart() {
     const calculateDiscount = (uniqueBooks) => {
         let discount = 1;
 
-        if(uniqueBooks.size === 3){
-            discount = 0.9;
-        } else if(uniqueBooks.size === 2) {
+        if (uniqueBooks.size === 2){
             discount = 0.95;
+        } else if(uniqueBooks.size === 3) {
+            discount = 0.9;
+        } else if (uniqueBooks.size === 4) {
+            discount = 0.8;
         }
 
         return discount;
