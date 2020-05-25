@@ -59,7 +59,7 @@ const SECOND_VOLUME = "Harry Potter and the Chamber of Secrets";
 const THIRD_VOLUME = "Harry Potter and the Prisoner of Azkaban";
 
 function Cart() {
-    let books = [];
+    const books = [];
 
     const calculateDiscount = (uniqueBooks) => {
         let discount = 1;
@@ -80,10 +80,10 @@ function Cart() {
         amount: () => {
             const uniqueBooks = new Set(books);
 
-            let discount = calculateDiscount(uniqueBooks);
+            const discount = calculateDiscount(uniqueBooks);
 
-            let booksAtNormalPrice = books.length - uniqueBooks.size;
-            let booksAtDiscountPrice = uniqueBooks.size;
+            const booksAtNormalPrice = books.length - uniqueBooks.size;
+            const booksAtDiscountPrice = uniqueBooks.size;
             return 8 * booksAtNormalPrice + 8 * booksAtDiscountPrice  * discount;
         }
     };
